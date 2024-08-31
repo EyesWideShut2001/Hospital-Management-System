@@ -12,6 +12,9 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+// Register the HospitalService
+builder.Services.AddScoped<HospitalService>();
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthorization(options =>

@@ -4,9 +4,10 @@ namespace HospitalManagment.Models
 {
     public class Admin
     {
-        public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string name { get; set; }
+        public int Id { get; set; } // Primary key
+        public string Username { get; set; } // Admin's username
+        public string PasswordHash { get; set; } // Hashed password
+        public string Email { get; set; } // Admin's email
+                                          // Additional personal details can be added here
     }
 }

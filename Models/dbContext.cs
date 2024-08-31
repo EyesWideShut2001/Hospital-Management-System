@@ -5,17 +5,20 @@ using Microsoft.EntityFrameworkCore;
 namespace HospitalManagment.Models
 
 {
-        public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<User>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
         {
-            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-                : base(options)
-            {
-            }
+        }
 
 
-            public DbSet<Department> Departments { get; set; }
-            public DbSet<Patient> Patients { get; set; }
-            public DbSet<MedicalStaff> MedicalStaffs { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<MedicalStaff> MedicalStaffs { get; set; }
+
+        public DbSet<Hospital> Hospitals { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,10 +42,10 @@ namespace HospitalManagment.Models
                 new Patient { Id = 1, Name = "John Doe", DateOfBirth = new DateTime(1980, 1, 1), MedicalRecord = "Healthy", DepartmentId = 1, AssignedDoctorId = 1 },
                 new Patient { Id = 2, Name = "Jane Smith", DateOfBirth = new DateTime(1985, 5, 15), MedicalRecord = "Healthy", DepartmentId = 2, AssignedDoctorId = 2 }
             );
+
         }
-
-
-    }
+    }   
+      
 
 
 }

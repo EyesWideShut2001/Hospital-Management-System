@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = " Admin ";
+}
+<h1>@ViewData["Title"]</h1>
+c
+<p>Use this page to detail your admin setup.</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ChatApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Login" method="post">
+                            <div class="form-group">
+                                <label for="HospitalCode">Hospital Code</label>
+                                <input type="text" id="Username" name="Username" class="form-control" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Username">Username</label>
+                                <input type="text" id="Username" name="Username" class="form-control" required />
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="Password">Password</label>
+                                <input type="password" id="Password" name="Password" class="form-control" required />
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="card-footer text-center">
+                                            <p>Don't have an account? <a asp-controller="User" asp-action="Register">Register here</a></p>
+                                        </div>  --!>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                    </body>
+                    </html>
