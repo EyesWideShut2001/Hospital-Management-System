@@ -20,6 +20,12 @@ namespace HospitalManagment.Models
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<Admin> Admins { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // SQLite connection string, using a local file database
+            optionsBuilder.UseSqlite("Data Source=ChatApp.db");
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
