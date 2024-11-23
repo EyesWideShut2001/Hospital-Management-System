@@ -1,0 +1,30 @@
+﻿/* Hero Section Styles */
+.hero {
+    background: linear-gradient(to right, #007bff, #6610f2);
+    color: white;
+    padding: 100px 0;
+}
+
+/* Feature Icon Styling */
+.feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    color: #6c757d;
+}

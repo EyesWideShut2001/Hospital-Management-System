@@ -1,6 +1,7 @@
 ﻿using System.Security.Principal;
 
 namespace HospitalManagment.Models
+
 {
     public class Admin
     {

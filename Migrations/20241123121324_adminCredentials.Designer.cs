@@ -3,6 +3,7 @@ using System;
 using HospitalManagment.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital_Managment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123121324_adminCredentials")]
+    partial class adminCredentials
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -68,21 +71,21 @@ namespace Hospital_Managment.Migrations
                         {
                             Id = 1,
                             Email = "alex@gmail.com",
-                            PasswordHash = "$2a$11$L3/d85LOzJfjy5675RoK/eboyC.cPWLWT6CiqI2MfZZcxqyFdJ6D.",
+                            PasswordHash = "1234",
                             Username = "Alex"
                         },
                         new
                         {
                             Id = 2,
                             Email = "andrei@gmail.com",
-                            PasswordHash = "$2a$11$PV77W8GBULlBDdHDPjzrqOxu5SapTvdp0Q4MBI/HXng.fk0DUO7T2",
+                            PasswordHash = "5678",
                             Username = "Andrei"
                         },
                         new
                         {
                             Id = 3,
                             Email = "marius@gmail.com",
-                            PasswordHash = "$2a$11$bLvSXelGYAoFKDk1cEblauRteYRotIEaizG9iW/TCTSs7Ymsk9H72",
+                            PasswordHash = "1278",
                             Username = "Marius"
                         });
                 });

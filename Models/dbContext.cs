@@ -34,21 +34,22 @@ namespace HospitalManagment.Models
             // Seeding Departments
             modelBuilder.Entity<Department>().HasData(
                 new Department { Id = 1, DepartmentName = "Cardiology" },
-                new Department { Id = 2, DepartmentName = "Neurology" }
+                new Department { Id = 2, DepartmentName = "Neurology" },
+                new Department { Id = 3, DepartmentName = "Pneumology" },
+                new Department { Id = 4, DepartmentName = "Dermatology" }
             );
 
             // Seeding Medical Staff
-            modelBuilder.Entity<MedicalStaff>().HasData(
-                new MedicalStaff { Id = 1, Name = "Dr. A" },
-                new MedicalStaff { Id = 2, Name = "Dr. B" }
-            );
+          
 
             // Seeding Patients
-            modelBuilder.Entity<Patient>().HasData(
-                new Patient { Id = 1, Name = "John Doe", DateOfBirth = new DateTime(1980, 1, 1), MedicalRecord = "Healthy", DepartmentId = 1, AssignedDoctorId = 1 },
-                new Patient { Id = 2, Name = "Jane Smith", DateOfBirth = new DateTime(1985, 5, 15), MedicalRecord = "Healthy", DepartmentId = 2, AssignedDoctorId = 2 }
-            );
-
+           //Seeding admin credientials
+           modelBuilder.Entity<Admin>().HasData(
+               new Admin { Id = 1, Username = "Alex", PasswordHash="$2a$11$L3/d85LOzJfjy5675RoK/eboyC.cPWLWT6CiqI2MfZZcxqyFdJ6D.", Email="alex@gmail.com" },
+               new Admin { Id = 2, Username = "Andrei", PasswordHash="$2a$11$PV77W8GBULlBDdHDPjzrqOxu5SapTvdp0Q4MBI/HXng.fk0DUO7T2", Email="andrei@gmail.com" },
+               new Admin { Id = 3, Username = "Marius", PasswordHash="$2a$11$bLvSXelGYAoFKDk1cEblauRteYRotIEaizG9iW/TCTSs7Ymsk9H72", Email="marius@gmail.com" }
+           );
+           
         }
     }   
       

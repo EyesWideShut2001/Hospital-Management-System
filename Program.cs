@@ -1,7 +1,7 @@
+using Hospital_Managment.Services;
 using HospitalManagment.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using static HospitalManagment.Models.ApplicationDbContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 // Register the HospitalService     
 builder.Services.AddScoped<HospitalService>();
+builder.Services.AddScoped<LoginService>();
 
 builder.Services.AddControllersWithViews();
 
@@ -29,7 +30,6 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
-
 
 app.MapControllerRoute(
     name: "default",
