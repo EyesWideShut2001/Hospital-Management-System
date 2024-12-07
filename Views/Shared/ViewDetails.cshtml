@@ -1,0 +1,24 @@
+﻿@model HospitalManagment.Models.Department
+
+@{
+ViewData["Title"] = "Department Information";
+}
+
+<h1>@Model.DepartmentName Information</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Department Details</h4>
+
+        <p><strong>Location:</strong> @Model.Location</p>
+        <p><strong>Founded Date:</strong> @(Model.FoundedDate.HasValue ? Model.FoundedDate.Value.ToString("MMMM dd, yyyy") : "Not Available")</p>
+
+        <p><strong>Main Doctor:</strong> @Model.MainDoctor</p>
+        <p><strong>Description:</strong> @Model.Description</p>
+        <p><strong>Accreditations:</strong> @Model.Accreditations</p>
+    </div>
+</div>
+
+<a asp-controller="Department" asp-action="EditDetails" asp-route-id="@Model.Id" class="btn btn-primary mt-3">Edit</a>
+<a asp-controller="Home" asp-action="Overview" asp-route-id="@Model.Id" class="btn btn-primary mt-3">Back to departments overview</a>
+

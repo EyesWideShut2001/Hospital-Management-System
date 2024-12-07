@@ -1,4 +1,4 @@
-﻿using Hospital_Managment.Models;
+﻿using HospitalManagment.Models;
 using System.Numerics;
 
 namespace HospitalManagment.Models
@@ -11,9 +11,10 @@ namespace HospitalManagment.Models
         public string MedicalRecord { get; set; }
 
         public int DepartmentId { get; set; } // Foreign key for Department
-        public Department Department { get; set; } // Navigation property for Department
+        public Department Departments { get; set; } // Navigation property for Department
 
         public int AssignedDoctorId { get; set; } // Foreign key for Doctor
         public MedicalStaff AssignedDoctor { get; set; } // Navigation property for Doctor
+        
     }
 }

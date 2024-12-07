@@ -1,0 +1,12 @@
+﻿@model HospitalManagment.Models.Department
+
+<h2>Your Department</h2>
+
+<div class="department-details">
+    <h3>@Model.DepartmentName</h3>
+    <p><strong>Location:</strong> @Model.Location</p>
+    <p><strong>Founded Date:</strong> @(Model.FoundedDate.HasValue ? Model.FoundedDate.Value.ToString("MMMM dd, yyyy") : "Not Available")</p>
+    <p><strong>Main Doctor:</strong> @Model.MainDoctor</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+    <p><strong>Accreditations:</strong> @Model.Accreditations</p>
+</div>

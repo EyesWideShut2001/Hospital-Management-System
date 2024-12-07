@@ -3,6 +3,7 @@ using System;
 using HospitalManagment.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hospital_Managment.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241207131900_AddDepartmentDetails")]
+    partial class AddDepartmentDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -154,17 +157,10 @@ namespace Hospital_Managment.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AdminId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("DepartmentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -173,16 +169,6 @@ namespace Hospital_Managment.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("MedicalStaffs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AdminId = 1,
-                            DepartmentId = 1,
-                            PasswordHash = "$2a$12$RvBnjdK5vod8qb02w0ZxzuafaeDZ5hUyjM.x2E1tEsardDL5tiA0y",
-                            Username = "Sara"
-                        });
                 });
 
             modelBuilder.Entity("HospitalManagment.Models.Patient", b =>
@@ -442,11 +428,13 @@ namespace Hospital_Managment.Migrations
 
             modelBuilder.Entity("HospitalManagment.Models.MedicalStaff", b =>
                 {
-                    b.HasOne("HospitalManagment.Models.Department", null)
+                    b.HasOne("HospitalManagment.Models.Department", "Department")
                         .WithMany("MedicalStaffs")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Department");
                 });
 
             modelBuilder.Entity("HospitalManagment.Models.Patient", b =>

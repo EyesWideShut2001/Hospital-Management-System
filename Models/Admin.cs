@@ -1,7 +1,4 @@
-﻿using System.Security.Principal;
-
-namespace HospitalManagment.Models
-
+﻿namespace HospitalManagment.Models
 {
     public class Admin
     {
@@ -9,6 +6,8 @@ namespace HospitalManagment.Models
         public string Username { get; set; } // Admin's username
         public string PasswordHash { get; set; } // Hashed password
         public string Email { get; set; } // Admin's email
-                                          // Additional personal details can be added here
-    }
+
+        // Navigation property
+        public List<Department> Departments { get; set; } // Departments managed by this admin
+    } 
 }
