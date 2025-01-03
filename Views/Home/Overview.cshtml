@@ -1,54 +1,143 @@
 ﻿@model IEnumerable<HospitalManagment.Models.Department>
 
 @{
-ViewData["Title"] = "Departments Overview";
+ViewData["Title"] = "Hospital Overview";
 }
 
-<h1>Departments Overview</h1>
+<div class="row">
+    <!-- Left Menu -->
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item active">Menu</li>
+            <li class="list-group-item">
+                <a href="#" onclick="showSection('departments')">Departments</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#" onclick="showSection('medicalStaff')">Medical Staff</a>
+            </li>
+            <li class="list-group-item">
+                <a href="#" onclick="showSection('patients')">Patients</a>
+            </li>
+        </ul>
+    </div>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Department Name</th>
-        <th>Medical Staff</th>
-        <th>Patients</th>
-        <th>Information</th>
-    </tr>
-    </thead>
-    <tbody>
-    @if (Model != null && Model.Any())
-    {
-    int i = 1;
-    foreach (var department in Model)
-    {
-    <tr>
-        <td>@i</td>
-        <td>@department.DepartmentName</td>
-        <td>
-            <a asp-controller="Department" asp-action="ViewMedicalStaff" asp-route-id="@department.Id">
-                View Medical Staff
-            </a>
-        </td>
-        <td>
-            <a asp-controller="Department" asp-action="ViewPatients" asp-route-id="@department.Id">
-                View Patients
-            </a>
-        </td>
-        <td>
-            <a asp-controller="Department" asp-action="ViewDetails" asp-route-id="@department.Id">
-                View Department Information
-            </a>
-        </td>
-    </tr>
-    i++;
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <!-- Departments Section -->
+        <div id="departments" class="content-section">
+            <h1>Departments Overview</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Department Name</th>
+                    <th>Medical Staff</th>
+                    <th>Patients</th>
+                    <th>Information</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if (Model != null && Model.Any())
+                {
+                int i = 1;
+                foreach (var department in Model)
+                {
+                <tr>
+                    <td>@i</td>
+                    <td>@department.DepartmentName</td>
+                    <td>
+                        <a asp-controller="Department" asp-action="ViewMedicalStaff" asp-route-id="@department.Id">
+                            View Medical Staff
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Department" asp-action="ViewPatients" asp-route-id="@department.Id">
+                            View Patients
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Department" asp-action="ViewDetails" asp-route-id="@department.Id">
+                            View Department Information
+                        </a>
+                    </td>
+                </tr>
+                i++;
+                }
+                }
+                else
+                {
+                <tr>
+                    <td colspan="5" class="text-center">No departments assigned.</td>
+                </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Medical Staff Section -->
+        <div id="medicalStaff" class="content-section" style="display: none;">
+            <h1>Medical Staff</h1>
+            <input type="text" id="searchMedicalStaff" placeholder="Search Medical Staff" class="form-control mb-3" onkeyup="filterTable('medicalStaffTable', this.value)" />
+            <table id="medicalStaffTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Position</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Dynamic data goes here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Patients Section -->
+        <div id="patients" class="content-section" style="display: none;">
+            <h1>Patients</h1>
+            <input type="text" id="searchPatients" placeholder="Search Patients" class="form-control mb-3" onkeyup="filterTable('patientsTable', this.value)" />
+            <table id="patientsTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Condition</th>
+                    <th>Department</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Dynamic data goes here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSection(section) {
+        document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
+        document.getElementById(section).style.display = 'block';
     }
+
+    function filterTable(tableId, searchText) {
+        const table = document.getElementById(tableId);
+        const rows = table.getElementsByTagName('tr');
+        const filter = searchText.toLowerCase();
+
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            let rowVisible = false;
+
+            for (const cell of cells) {
+                if (cell.textContent.toLowerCase().indexOf(filter) > -1) {
+                    rowVisible = true;
+                    break;
+                }
+            }
+
+            rows[i].style.display = rowVisible ? '' : 'none';
+        }
     }
-    else
-    {
-    <tr>
-        <td colspan="5" class="text-center">No departments assigned.</td>
-    </tr>
-    }
-    </tbody>
-</table>
+</script>
