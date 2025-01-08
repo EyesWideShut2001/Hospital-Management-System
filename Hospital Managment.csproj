@@ -17,4 +17,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Shared\ViewMedicalStaffList.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\Page1.cshtml" />
+  </ItemGroup>
+
 </Project>

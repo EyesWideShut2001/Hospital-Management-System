@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+ViewData["Title"] = "Home";
 }
 
 <!DOCTYPE html>
@@ -10,16 +10,71 @@
     <title>@ViewData["Title"] - ChatApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/landing.css" asp-append-version="true" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .hero {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 80px 0;
+        }
+        .features {
+            background-color: #ffffff;
+            padding: 60px 20px;
+        }
+        .feature-item {
+            margin-bottom: 30px;
+        }
+        .cta {
+            background-color: #007bff;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .cta a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .cta a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<div class="hero text-center text-white">
+<div class="hero text-center">
     <div class="container py-5">
         <h1 class="display-4">Welcome to Hospital Management App</h1>
-        <p class="lead mt-3">Your one-stop solution to manage hospital operations efficiently and effectively.</p>
+        <p class="lead mt-3">Your one-step solution to manage hospital operations efficiently and effectively.</p>
     </div>
 </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<div class="features container text-center py-5">
+    <h2 class="mb-4">Our Key Features</h2>
+    <div class="row">
+        <div class="col-md-4 feature-item">
+            <h4>Patient Management</h4>
+            <p>Easily track patient records, appointments, and medical history.</p>
+        </div>
+        <div class="col-md-4 feature-item">
+            <h4>Inventory Control</h4>
+            <p>Keep a real-time check on hospital supplies and equipment.</p>
+        </div>
+        <div class="col-md-4 feature-item">
+            <h4>Reports & Analytics</h4>
+            <p>Generate insightful reports to make data-driven decisions.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -27,7 +27,7 @@ namespace HospitalManagment.Controllers
             return View();
         }
         
-        public IActionResult MedicalStaffOverview()
+        public IActionResult MedicalStaffOverview() //pt login la medici
         {
             var medicalStaffId = HttpContext.Session.GetInt32("MedicalStaffId");
             var medicalStaffDepartmentId = HttpContext.Session.GetInt32("MedicalStaffDepartmentId");
@@ -56,25 +56,37 @@ namespace HospitalManagment.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Overview()
+        public IActionResult Overview() // For the admin login
         {
-            // Check for Admin login
             var adminId = HttpContext.Session.GetInt32("AdminId");
-    
-            if (adminId != null)
+            if (adminId == null)
             {
-                // Admin is logged in, show all departments for that admin
-                var departments = _context.Departments
-                    .Where(d => d.AdminId == adminId)
-                    .ToList();
-                return View(departments);
+                return RedirectToAction("ALogin", "Login");
             }
 
-            // Check for Medical Staff login
-           
-            // If neither is found, redirect to Login page
-            return RedirectToAction("ALogin", "Login");
+            // Get the departments and medical staff for the logged-in admin
+            var departments = _context.Departments
+                .Where(d => d.AdminId == adminId)
+                .Include(d => d.MedicalStaffs) // Include medical staff for each department
+                .Include(d => d.Patients)      // Include patients for each department
+                .ToList();
+
+            // Collect all the medical staff for the admin's departments
+            var medicalStaffList = _context.MedicalStaffs
+                .Where(ms => departments.Select(d => d.Id).Contains(ms.DepartmentId))
+                .ToList();
+
+            // Create the model for the view
+            var model = new AdminOverviewModelDeclaration
+            {
+                AdminId = adminId.Value,
+                Departments = departments,
+                MedicalStaffList = medicalStaffList
+            };
+
+            return View(model); // Pass the correct model to the view
         }
+
 
     }
 }

@@ -1,0 +1,29 @@
+﻿@model List<Patient>
+
+<div id="patients" class="content-section">
+    <h1>Patients Overview</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Medical Record</th>
+            <th>Details</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        @foreach (var patient in Model)
+        {
+            <tr>
+                <td>@patient.Id</td>
+                <td>@patient.Name</td>
+                <td>@patient.DateOfBirth.ToString()</td>
+                <td>@patient.MedicalRecord</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

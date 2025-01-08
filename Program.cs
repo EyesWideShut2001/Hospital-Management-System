@@ -17,6 +17,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddScoped<HospitalService>();
 builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthorization(options =>
@@ -52,5 +53,6 @@ app.UseStaticFiles();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();

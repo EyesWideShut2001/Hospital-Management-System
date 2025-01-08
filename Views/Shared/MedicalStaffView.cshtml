@@ -1,0 +1,24 @@
+﻿@model List<MedicalStaff>
+
+<div id="medicalStaff" class="content-section">
+    <h1>Medical Staff Overview</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Department</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var medicalStaff in Model)
+        {
+            <tr>
+                <td>@medicalStaff.Id</td>
+                <td>@medicalStaff.Username</td>
+                <td>@medicalStaff.DepartmentId</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

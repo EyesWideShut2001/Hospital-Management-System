@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HospitalManagement.Controllers
 {
     //[Authorize(Policy = "DepartmentHeadPolicy")]
-    public class DepartmentController : Controller
+    public class DepartmentController : Controller //pt departamentul specific unui admin
     {
         private readonly ApplicationDbContext _context;
 
