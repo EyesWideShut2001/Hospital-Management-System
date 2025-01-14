@@ -1,5 +1,5 @@
 ﻿# 🏥Hospital Management
-![img.png](img.png)
+![img.png](./img.png)
 This is a Hospital Management Application built using the ASP.NET MVC framework. The app is designed to simplify and centralize administrative and medical processes in hospitals, providing features for both administrators and medical staff.
 
 ---
