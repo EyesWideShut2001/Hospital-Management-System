@@ -55,5 +55,5 @@ User: Matei   | Pass: 5678
 
 User: Sara    | Pass: 12
 
-User: Carina  | Pass:23
+User: Carina  | Pass: 23
 
