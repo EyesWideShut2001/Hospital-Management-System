@@ -19,14 +19,54 @@
 
     <div class="col-md-9">
         <div id="dynamic-content">
-            <h3>Select an option from the menu</h3>
+            
+        </div>
+        <div class="hospital-description">
+            <h1>Welcome!</h1>
+            <p>
+                We are committed to providing compassionate, patient-centered care that combines
+                state-of-the-art technology with a deep dedication to your health and well-being.
+                Our facility is home to a diverse team of highly skilled physicians, nurses, and healthcare
+                professionals who strive to deliver exceptional medical services across a broad spectrum of specialties.
+            </p>
+            <p>
+                With modern, comfortable facilities and advanced diagnostic and treatment capabilities,
+                We are equipped to handle everything from routine check-ups to complex surgical procedures.
+                We offer comprehensive services, including:
+            </p>
+            <ul>
+                <li><strong>Emergency and Trauma Care</strong> – 24/7 life-saving services with rapid response.</li>
+                <li><strong>Specialized Clinics</strong> – Cardiology, oncology, pediatrics, and more.</li>
+                <li><strong>Surgical Excellence</strong> – Minimally invasive and traditional surgeries.</li>
+                <li><strong>Rehabilitation and Wellness</strong> – Physical therapy and holistic health programs.</li>
+            </ul>
+            <p>
+                Our mission is to promote healing, provide hope, and build a healthier community. Whether you’re visiting
+                for a routine consultation or an urgent medical need, you can trust us to deliver care with empathy,
+                precision, and a personal touch.
+            </p>
+            <p>
+                Experience healthcare that prioritizes <strong>you</strong>. Visit us today and take the first step toward
+                a healthier tomorrow.
+            </p>
         </div>
     </div>
-    
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).on('click', '.list-link', function (e) {
             e.preventDefault();
+            var url = $(this).data('url');
+            $('#dynamic-content').load(url);
+        });
+        $(document).on('click', '.list-link', function (e) {
+            e.preventDefault();
+
+            // Hide the hospital description
+            $('.hospital-description').hide();
+
+            // Load the dynamic content from the clicked link
             var url = $(this).data('url');
             $('#dynamic-content').load(url);
         });
